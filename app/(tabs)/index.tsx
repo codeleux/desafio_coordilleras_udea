@@ -1,6 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
 import {
+  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -19,54 +20,63 @@ export default function App() {
       icon: "🌱",
       colors: ['#22c55e', '#16a34a'],
       description: "Primero hay que hacer la selección de semillas para que sean de la más alta calidad. Estas se siembran en germinadores con arena lavada durante 2 meses, luego pasan al almácigo donde crecen en bolsitas individuales por otros 6 meses. Los caficultores cuidan cada plántula bajo sombra de forma controlada hasta que estas están listas para el campo.",
+      image: 'https://media.istockphoto.com/id/1126541751/es/foto/sembrar-las-semillas-en-la-suciedad-de-las-manos.jpg?s=612x612&w=0&k=20&c=G0A6JuqlHjKrRMbGt4mfFBzFTwVbWD0LkQ01gFbxwtg='
     },
     {
       title: "Crecimiento y Cuidado",
       icon: "☀️",
       colors: ['#eab308', '#d97706'],
       description: "Durante 3 a 4 años, los cafetos (nombre del cultivo de café) reciben cuidados. Se controlan las plagas, se fertiliza el suelo con materia orgánica y se mantiene la sombra de los otros árboles. El clima templado y los suelos ricos en nutrientes colombianos son perfectos para el desarrollo de estas plantas.",
+      image: 'https://cdn0.ecologiaverde.com/es/posts/0/7/8/como_crecen_las_plantas_2870_orig.jpg'
     },
     {
       title: "Floración y Fructificación",
       icon: "💧",
       colors: ['#ec4899', '#e11d48'],
       description: "Las flores blancas de los cafetos aparecen en las ramas. Cada flor tarda aproximadamente 5 meses en formarse y florece después de las lluvias. Estas flores se convierten en frutos verdes que maduran por 9 meses, pasando de verde a amarillo, y por último a rojo cuando están listos para cosechar.",
+      image: 'https://www.cafesmamasame.com/sites/default/files/2022-03/flor%20de%20cafe%CC%81%20V2_0.png'
     },
     {
       title: "Cosecha",
       icon: "✂️",
       colors: ['#ef4444', '#b91c1c'],
       description: "Por lo general la cosecha es manual y selectiva, solo se recogen los frutos rojos maduras. Este garantiza la máxima calidad de cada fruto. Colombia tiene dos cosechas principales: una de abril a junio y la otra de septiembre a noviembre, cosechando café fresco para todo el año.",
+      image: 'https://perfectdailygrind.com/es/wp-content/uploads/sites/2/2021/01/Recoleccion-Selectiva-1.jpg'
     },
     {
       title: "Despulpado y Fermentación",
       icon: "🔬",
       colors: ['#a855f7', '#7c3aed'],
       description: "Estos frutos pasan por 'despulpadoras' que retiran la pulpa externa. Los granos con mucílago (una sustancia viscosa) se fermentan en tanques por 12-48 horas. Con este proceso las enzimas naturales eliminan el mucílago y desarrollan los sabores característicos del café.",
+      image: 'https://appsanisidro.soomi.co/app_data_archivos/sanisidro.soomi.co/secciones/98b4aaf52ebc2874120830f4aeab4026843879df1732052794.jpg'
     },
     {
       title: "Secado",
       icon: "🌞",
       colors: ['#f97316', '#eab308'],
       description: "Los granos se secan al sol en patios o camas elevadas. Se extienden en capas delgadas y se voltean constantemente para asegurar un secado uniforme. El proceso toma de 8 a 15 días hasta alcanzar el 11% al 12% de humedad. Este nivel de humedad es imperativo para conservar el café y evitar que se mohosee.",
+      image: 'https://www.cafedeespecialidad.cafe/wp-content/uploads/2025/03/secado_cafe.jpg'
     },
     {
       title: "Trillado y Clasificación",
       icon: "💨",
       colors: ['#06b6d4', '#2563eb'],
       description: "En las trilladoras se elimina la cáscara que cubre el grano. Luego, máquinas clasificadoras separan los granos por tamaño, peso y densidad. Al final una inspección visual busca defectos en cada grano. Solo los mejores son usados para exportación.",
+      image: 'https://www.specialtycoffeemag.com/wp-content/uploads/2023/02/trilla-.jpg'
     },
     {
       title: "Tostado",
       icon: "🔥",
       colors: ['#d97706', '#ea580c'],
       description: "El tostado transforma el grano en el café que conocemos. A temperaturas de 180-250°C, los granos se expanden, cambian de color y desarrollan más de 800 compuestos químicos aromáticos. El tueste (ya sea claro, medio u oscuro) da el sabor característico del mismo.",
+      image: 'https://kopikrate.com/cdn/shop/articles/enfriamiento-cafe-maquina-tostadora-proceso-tostado-cafe-joven-trabajador-barista-mezclando-sosteniendo-granos-cafe-manos.jpg?v=1697715037'
     },
     {
       title: "Molienda y Preparación",
       icon: "🍴",
       colors: ['#92400e', '#d97706'],
       description: "La molienda es distinta según el método, por ejemplo: gruesa para prensa francesa, fina para espresso. Todo método de preparación muestra diferentes características del café. El café por lo general se disfruta en múltiples formas, como lo son el espresso, filtrado, prensa francesa o el simple tinto de siempre.",
+      image: 'https://clubdelicatessen.com/wp-content/uploads/2021/02/Cafe-en-grano-o-molido-Tipos-de-molienda-segun-tu-cafetera.jpg'
     },
   ];
 
@@ -80,6 +90,7 @@ export default function App() {
           Conozcamos el proceso necesario para hacer el café en nuestra tierra
 
         </Text>
+        
         <View style={styles.featuresBox}>
           <Text style={styles.featureText}>10 etapas interactivas</Text>
           <Text style={styles.featureText}>Sobre como hacemos nuestro café</Text>
@@ -133,6 +144,13 @@ export default function App() {
           <View style={styles.contentCard}>
             <Text style={styles.description}>{stage.description}</Text>
 
+          </View>
+          <View style={styles.imageContainer}>
+            <Image
+              src={stage.image}
+              style={styles.stageImage}
+              resizeMode="cover"
+            />
           </View>
         </ScrollView>
 
@@ -362,5 +380,16 @@ const styles = StyleSheet.create({
   },
   navButtonTextDisabled: {
     color: '#9ca3af',
+  },
+  imageContainer: {
+    marginTop: 16,
+    marginBottom: 16,
+    borderRadius: 16,
+    overflow: 'hidden',
+    elevation: 6,
+  },
+  stageImage: {
+    width: '100%',
+    height: 250,
   },
 });
